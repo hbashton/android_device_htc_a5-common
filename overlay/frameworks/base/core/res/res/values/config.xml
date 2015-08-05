@@ -287,4 +287,8 @@
          performance profiles  -->
     <string name="config_perf_profile_default_entry" translatable="false">1</string>
 
+    <!-- Default values for display color temperature -->
+    <integer name="config_dayColorTemperature">7000</integer>
+    <integer name="config_nightColorTemperature">4000</integer>
+
 </resources>
