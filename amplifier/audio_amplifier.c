@@ -33,7 +33,6 @@
 
 typedef struct m8_device {
     amplifier_device_t amp_dev;
-    uint32_t current_output_devices;
     audio_mode_t current_mode;
 } m8_device_t;
 
@@ -54,20 +53,18 @@ static int amp_enable_output_devices(amplifier_device_t *device,
 {
     m8_device_t *dev = (m8_device_t *) device;
 
-    if (devices) {
-        switch (dev->current_output_devices) {
-            case SND_DEVICE_OUT_SPEAKER:
-            case SND_DEVICE_OUT_SPEAKER_REVERSE:
-            case SND_DEVICE_OUT_VOICE_SPEAKER:
-            case SND_DEVICE_OUT_SPEAKER_PROTECTED:
-            case SND_DEVICE_OUT_VOIP_SPEAKER:
-            case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
-                tfa9887_power(enable);
-                if (enable)
-                    /* FIXME: This may fail because I2S is not active */
-                    tfa9887_set_mode(dev->current_mode);
-                break;
-        }
+    switch (devices) {
+        case SND_DEVICE_OUT_SPEAKER:
+        case SND_DEVICE_OUT_SPEAKER_REVERSE:
+        case SND_DEVICE_OUT_VOICE_SPEAKER:
+        case SND_DEVICE_OUT_SPEAKER_PROTECTED:
+        case SND_DEVICE_OUT_VOIP_SPEAKER:
+        case SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES:
+            tfa9887_power(enable);
+            if (enable)
+                /* FIXME: This may fail because I2S is not active */
+                tfa9887_set_mode(dev->current_mode);
+            break;
     }
 
     return 0;
@@ -116,7 +113,6 @@ static int amp_module_open(const hw_module_t *module, UNUSED const char *name,
     m8_dev->amp_dev.output_stream_standby = NULL;
     m8_dev->amp_dev.input_stream_standby = NULL;
 
-    m8_dev->current_output_devices = SND_DEVICE_NONE;
     m8_dev->current_mode = AUDIO_MODE_NORMAL;
 
     *device = (hw_device_t *) m8_dev;
