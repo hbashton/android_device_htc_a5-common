@@ -30,12 +30,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
-    audio.offload.buffer.size.kb=32 \
-    audio.offload.gapless.enabled=true \
-    av.offload.enable=true \
-    av.streaming.offload.enable=true \
-    audio.offload.pcm.16bit.enable=true \
-    audio.offload.pcm.24bit.enable=true \
+    av.offload.enable=false \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.speaker=true \
     ro.qc.sdk.audio.fluencetype=fluence \
