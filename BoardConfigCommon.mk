@@ -146,27 +146,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    akmd.te \
-    device.te \
-    file_contexts \
-    file.te \
-    init.te \
-    kernel.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    platform_app.te \
-    property_contexts \
-    recovery.te \
-    rmt_storage.te \
-    system_server.te \
-    thermal-engine.te \
-    ueventd.te \
-    vibe_dev.te \
-    vold.te \
-    wpa.te
-
 # Hardware
 BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
