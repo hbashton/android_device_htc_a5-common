@@ -285,4 +285,7 @@
     <integer name="config_dayColorTemperature">7000</integer>
     <integer name="config_nightColorTemperature">4000</integer>
 
+    <!-- enable doze powersaving mode -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+
 </resources>
