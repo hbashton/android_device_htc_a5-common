@@ -116,7 +116,6 @@ static char *camera_fixup_getparams(const char *settings)
     params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
     params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
     params.set("qc-max-num-requested-faces", "0");
-    params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
 
     params.set("preview-frame-rate-mode", "frame-rate-fixed");
 
@@ -166,17 +165,9 @@ static char *camera_fixup_setparams(int id, const char *settings)
     params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_HW, "0");
     params.set(android::CameraParameters::KEY_MAX_NUM_DETECTED_FACES_SW, "0");
     params.set("qc-max-num-requested-faces", "0");
-    params.set(android::CameraParameters::KEY_FACE_DETECTION, "off");
 
     /* Enable fixed fps mode */
     params.set("preview-frame-rate-mode", "frame-rate-fixed");
-
-    if (!isVideo && id == 0) {
-        /* Disable OIS, set continuous burst to prevent crash */
-        params.set(android::CameraParameters::KEY_CONTIBURST_TYPE, "unlimited");
-        params.set(android::CameraParameters::KEY_OIS_SUPPORT, "false");
-        params.set(android::CameraParameters::KEY_OIS_MODE, "off");
-    }
 
     if (isVideo && id == 1) {
         /* Front camera only supports infinity */
