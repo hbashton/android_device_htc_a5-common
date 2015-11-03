@@ -101,13 +101,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libhtc_symbols
 
-# FM radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
-
 # Graphics
 PRODUCT_PACKAGES += \
     copybit.msm8226 \
