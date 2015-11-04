@@ -8,6 +8,10 @@ on early-init
     write /sys/module/msm_thermal/core_control/enabled 1
 
 on enable-low-power
+    stop mpdecision
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
     write /sys/module/lpm_levels/enable_low_power/l2 4
     write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
@@ -44,6 +48,10 @@ on enable-low-power
     chmod 664 /sys/devices/system/cpu/cpu1/online
     chmod 664 /sys/devices/system/cpu/cpu2/online
     chmod 664 /sys/devices/system/cpu/cpu3/online
+    start mpdecision
+
+    write /sys/class/devfreq/qcom,cpubw.66/governor "msm_cpufreq"
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
 
     write /sys/module/cpu_boost/parameters/sync_threshold 1728000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
@@ -62,56 +70,3 @@ on class_start:late_start
 
 on property:init.svc.recovery=running
     trigger enable-low-power
-
-# Performance Profiles
-
-# Powersave
-on property:sys.perf.profile=0
-    stop mpdecision
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/class/devfreq/qcom,cpubw.65/governor "powersave"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "ondemand"
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
-    start mpdecision
-
-# Balanced
-on property:sys.perf.profile=1
-    stop mpdecision
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/class/devfreq/qcom,cpubw.65/governor "msm_cpufreq"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "ondemand"
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
-    write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
-    write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
-    write /sys/devices/system/cpu/cpufreq/ondemand/down_differential 10
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_multi_core 70
-    write /sys/devices/system/cpu/cpufreq/ondemand/down_differential_multi_core 3
-    write /sys/devices/system/cpu/cpufreq/ondemand/optimal_freq 300000
-    write /sys/devices/system/cpu/cpufreq/ondemand/sync_freq 300000
-    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold_any_cpu_load 80
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
-    start mpdecision
-
-# High performance
-on property:sys.perf.profile=2
-    stop mpdecision
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/class/devfreq/qcom,cpubw.65/governor "performance"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "performance"
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "performance"
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "performance"
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "performance"
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor "performance"
