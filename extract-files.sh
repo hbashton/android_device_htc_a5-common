@@ -2,9 +2,6 @@
 
 set -e
 
-export DEVICE=a5
-export VENDOR=htc
-
 function extract() {
     for FILE in `egrep -v '(^#|^$)' $1`; do
         OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
@@ -13,7 +10,6 @@ function extract() {
         if [ -z $DEST ]; then
             DEST=$FILE
         fi
-	echo "Extracting /system/$FILE ..."
         DIR=`dirname $FILE`
         if [ ! -d $2/$DIR ]; then
             mkdir -p $2/$DIR
@@ -28,7 +24,8 @@ function extract() {
         else
             cp $SRC/system/$FILE $2/$DEST
             # if file dot not exist try destination
-            if [ "$?" != "0" ]; then
+            if [ "$?" != "0" ]
+                then
                 cp $SRC/system/$DEST $2/$DEST
             fi
         fi
@@ -54,6 +51,12 @@ fi
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
-extract ../../$VENDOR/$DEVICE/proprietary-files.txt $BASE
+extract ../../$VENDOR/$DEVICE/device-proprietary-files.txt $BASE
+extract ../../$VENDOR/a5-common/proprietary-files.txt $BASE
+
+BASE=../../../vendor/$VENDOR/a5-common/proprietary
+rm -rf $BASE/*
+
+extract ../../$VENDOR/a5-common/common-proprietary-files.txt $BASE
 
 ./setup-makefiles.sh

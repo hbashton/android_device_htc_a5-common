@@ -20,7 +20,7 @@
 # definition file).
 #
 
-TARGET_OTA_ASSERT_DEVICE := a5,a5tl,a5dug,a5dwg,a5chl,a5ul
+LOCAL_PATH := device/htc/a5-common
 
 BOARD_VENDOR := htc
 
@@ -48,7 +48,7 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x02008000 --tags_offset 0x01e00000
-BOARD_CUSTOM_BOOTIMG_MK := device/htc/a5/mkbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 TARGET_KERNEL_CONFIG := cm_a5_defconfig
 TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 
@@ -56,7 +56,6 @@ TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 BOARD_USES_QCOM_HARDWARE := true
 
 # Audio
-AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 AUDIO_FEATURE_ENABLED_FM := true
@@ -67,7 +66,7 @@ AUDIO_FEATURE_ENABLED_LOW_LATENCY_CAPTURE := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/a5/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 
 # Camera
 COMMON_GLOBAL_CFLAGS += -DPROPERTY_PERMS_APPEND='{"htc.camera.sensor.", AID_CAMERA, 0}, {"camera.4k2k.", AID_MEDIA, 0},'
@@ -85,7 +84,7 @@ USE_OPENGL_RENDERER := true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH := device/htc/a5/include
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -101,7 +100,6 @@ TARGET_POWERHAL_VARIANT := qcom
 
 # RIL
 BOARD_PROVIDES_LIBRIL := true
-BOARD_RIL_CLASS := ../../../device/htc/a5/ril/
 
 # RPC
 TARGET_NO_RPC := true
@@ -140,12 +138,12 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-TARGET_RECOVERY_FSTAB := device/htc/a5/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/htc/a5/sepolicy
+BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
 
 BOARD_SEPOLICY_UNION += \
     akmd.te \
@@ -168,20 +166,12 @@ BOARD_SEPOLICY_UNION += \
     vold.te \
     wpa.te
 
-# Vendor Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_a5
-TARGET_LIBINIT_DEFINES_FILE := device/htc/a5/init/init_a5.c
-
-# Releasetools
-TARGET_RELEASETOOLS_EXTENSIONS := device/htc/a5/releasetools
-
 # Webkit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 
 # Hardware
-BOARD_HARDWARE_CLASS := device/htc/a5/cmhw
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
 # inherit from the proprietary version
--include vendor/htc/a5/BoardConfigVendor.mk
+-include vendor/htc/a5-common/BoardConfigVendor.mk

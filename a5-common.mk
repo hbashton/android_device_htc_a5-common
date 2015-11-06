@@ -16,6 +16,10 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product-if-exists, vendor/htc/a5-common/a5-common-vendor.mk)
+
+# System properties
+-include $(LOCAL_PATH)/system_prop.mk
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -37,19 +41,18 @@ PRODUCT_PACKAGES += \
 
 # Qcom init scripts for /etc
 PRODUCT_PACKAGES += \
-   init.qcom.bt.bluedroid.sh \
-   init.qcom.bt.sh
+    init.qcom.bt.bluedroid.sh \
+    init.qcom.bt.sh \
+    init.qcom.ril.sh
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -98,10 +101,10 @@ PRODUCT_PACKAGES += \
 
 # FM radio
 PRODUCT_PACKAGES += \
-     qcom.fmradio \
-     libqcomfm_jni \
-     FM2 \
-     FMRecord
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2 \
+    FMRecord
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -145,24 +148,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
-# NFC
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access.xml
-else
-    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/nfcee_access_debug.xml
-endif
-
-PRODUCT_COPY_FILES += \
-    $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/configs/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/configs/libnfc-brcm.conf:system/etc/libnfc-brcm.conf
-
-PRODUCT_PACKAGES += \
-    NfcNci \
-    Tag \
-    com.android.nfc_extras \
-    nfc_nci.pn54x.default
-
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
@@ -192,10 +177,6 @@ PRODUCT_COPY_FILES += \
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
-
-# Variant linking script
-PRODUCT_COPY_FILES += \
-    device/htc/a5/releasetools/variant_script.sh:install/bin/variant_script.sh
 
 # Wifi firmware
 PRODUCT_PACKAGES += \

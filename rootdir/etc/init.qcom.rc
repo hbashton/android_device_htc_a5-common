@@ -537,13 +537,13 @@ service ril-daemon2 /system/bin/rild -c 2
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
     disabled
 
+service rild2-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
+    class late_start
+    user root
+    group root
+    oneshot
+
 # Properties start here
-on property:persist.radio.multisim.config=dsds
-    start ril-daemon2
-
-on property:persist.radio.multisim.config=dsda
-    start ril-daemon2
-
 on property:bluetooth.hciattach=true
     start hciattach
 

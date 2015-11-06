@@ -13,9 +13,10 @@
 # limitations under the License.
 #
 
-ifeq ($(TARGET_DEVICE),a5)
+ifneq ($(filter a5ul a5dwg,$(TARGET_DEVICE)),)
 
-include $(call all-subdir-makefiles)
+LOCAL_PATH := $(call my-dir)
+include $(call all-subdir-makefiles,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
 
