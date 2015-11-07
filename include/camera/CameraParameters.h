@@ -90,6 +90,19 @@ public:
     // is invalid, and is "-1x-1".
     void getPreferredPreviewSizeForVideo(int *width, int *height) const;
 
+    const char *getPreviewFrameRateMode() const;
+    void setPreviewFrameRateMode(const char *mode);
+
+    int getBrightnessLumaTargetSet(int *brightness, int *luma) const;
+
+    void setTouchIndexAec(int x, int y);
+    void getTouchIndexAec(int *x, int *y);
+
+    void setTouchIndexAf(int x, int y);
+    void getTouchIndexAf(int *x, int *y);
+
+    void getRawSize(int *x, int *y) const;
+
     void setPreviewFrameRate(int fps);
     int getPreviewFrameRate() const;
     void getPreviewFpsRange(int *min_fps, int *max_fps) const;
@@ -688,6 +701,10 @@ public:
     /* HTC parameters */
     static const char SCENE_MODE_TEXT[];
     static const char KEY_SMILEINFO_BYFACE_SUPPORTED[];
+    static const char KEY_CONTI_BURST_STATE[];
+    static const char CONTI_BURST_CAPTURING[];
+    static const char CONTI_BURST_CAPTURE_DONE[];
+    static const char KEY_FORCE_USE_AUDIO_ENABLED[];
 
     /**
      * Returns the the supported preview formats as an enum given in graphics.h

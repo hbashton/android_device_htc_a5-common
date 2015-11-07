@@ -179,6 +179,10 @@ const char CameraParameters::LIGHTFX_HDR[] = "high-dynamic-range";
 // HTC settings
 const char CameraParameters::SCENE_MODE_TEXT[] = "text";
 const char CameraParameters::KEY_SMILEINFO_BYFACE_SUPPORTED[] = "smileinfo-byface-supported";
+const char CameraParameters::KEY_CONTI_BURST_STATE[] = "contiburst-state";
+const char CameraParameters::CONTI_BURST_CAPTURING[] = "contiburst-capturing";
+const char CameraParameters::CONTI_BURST_CAPTURE_DONE[] = "contiburst-done";
+const char CameraParameters::KEY_FORCE_USE_AUDIO_ENABLED[] = "forceuseaudio";
 
 CameraParameters::CameraParameters()
     : CameraParameters_EXT(this), mMap()
@@ -384,6 +388,67 @@ void CameraParameters::getPreferredPreviewSizeForVideo(int *width, int *height) 
     const char *p = get(KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO);
     if (p == 0)  return;
     parse_pair(p, width, height, 'x');
+}
+
+const char * CameraParameters::getPreviewFrameRateMode() const
+{
+    return get("preview-frame-rate-mode");
+}
+
+void CameraParameters::setPreviewFrameRateMode(const char *mode)
+{
+    set("preview-frame-rate-mode", mode);
+}
+
+int CameraParameters::getBrightnessLumaTargetSet(int *brightness, int *luma) const
+{
+    const char *p;
+    *brightness = *luma = -1;
+    p = get("brightness-luma-target-set");
+    if (p == 0) return -1;
+    parse_pair(p, brightness, luma, ',');
+    return 0;
+}
+
+void CameraParameters::setTouchIndexAec(int x, int y)
+{
+    char buf[32];
+    snprintf(buf, 32, "%dx%d", x, y);
+    set("touch-index-aec", buf);
+}
+
+void CameraParameters::getTouchIndexAec(int *x, int *y)
+{
+    const char *p;
+    *x = *y = -1;
+    p = get("touch-index-aec");
+    if (p == 0) return;
+    parse_pair(p, x, y, 'x');
+}
+
+void CameraParameters::setTouchIndexAf(int x, int y)
+{
+    char buf[32];
+    snprintf(buf, 32, "%dx%d", x, y);
+    set("touch-index-af", buf);
+}
+
+void CameraParameters::getTouchIndexAf(int *x, int *y)
+{
+    const char *p;
+    *x = *y = -1;
+    p = get("touch-index-af");
+    if (p == 0) return;
+    parse_pair(p, x, y, 'x');
+}
+
+void CameraParameters::getRawSize(int *x, int *y) const
+{
+    const char *p;
+    *x = *y = -1;
+    p = get("raw-size");
+    if (p == 0) return;
+    parse_pair(p, x, y, 'x');
 }
 
 void CameraParameters::getSupportedPreviewSizes(Vector<Size> &sizes) const
