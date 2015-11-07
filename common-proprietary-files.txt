@@ -60,7 +60,7 @@ etc/firmware/ILP0100_IPM_Code_out.bin
 etc/firmware/ILP0100_IPM_Data_out.bin
 etc/firmware/lscbuffer_rev2.bin
 lib/libawb_calibration.so
-lib/hw/camera.vendor.msm8226.so
+lib/hw/camera.msm8226.so
 lib/libBeautyChat.so
 lib/libcamera_aec.so
 lib/libcamera_af.so
