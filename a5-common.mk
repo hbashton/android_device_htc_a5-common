@@ -97,9 +97,9 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# HTC symbols
+# HTC logging symbols
 PRODUCT_PACKAGES += \
-    libhtc_symbols
+    libshim_log
 
 # Graphics
 PRODUCT_PACKAGES += \
