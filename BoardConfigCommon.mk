@@ -77,6 +77,10 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
 
+# FM Radio
+AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
 # Graphics
 TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true

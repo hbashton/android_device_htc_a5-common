@@ -346,6 +346,10 @@
           <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="1" />
      </path>
 
+     <path name="fm-virtual-record capture-fm">
+          <ctl name="MultiMedia2 Mixer INTERNAL_FM_TX" value="1" />
+     </path>
+
      <path name="voice-call">
           <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="1" />
           <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />

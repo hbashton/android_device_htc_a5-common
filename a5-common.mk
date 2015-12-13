@@ -101,6 +101,11 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
+# FM Radio
+PRODUCT_PACKAGES += \
+    FMRadio \
+    libfmjni
+
 # HTC logging symbols
 PRODUCT_PACKAGES += \
     libshim_log
