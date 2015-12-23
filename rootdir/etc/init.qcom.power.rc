@@ -50,7 +50,7 @@ on enable-low-power
     chmod 664 /sys/devices/system/cpu/cpu3/online
     start mpdecision
 
-    write /sys/class/devfreq/qcom,cpubw.66/governor "msm_cpufreq"
+    write /sys/class/devfreq/qcom,cpubw.66/governor "cpubw_hwmon"
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor "msm-adreno-tz"
 
     write /sys/module/cpu_boost/parameters/sync_threshold 1728000
@@ -64,6 +64,9 @@ on enable-low-power
     write /sys/kernel/mm/ksm/run 1
 
     start mpdecision
+
+    write /dev/cpuctl/notify_on_migrate "1"
+    rm /data/system/default_values
 
 on class_start:late_start
     trigger enable-low-power
