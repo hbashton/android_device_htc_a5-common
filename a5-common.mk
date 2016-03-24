@@ -112,8 +112,7 @@ PRODUCT_PACKAGES += \
     gralloc.msm8226 \
     memtrack.msm8226 \
     libgenlock \
-    liboverlay \
-    libboringssl-compat
+    liboverlay
 
 # Keylayouts and Keychars
 PRODUCT_COPY_FILES += \
