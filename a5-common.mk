@@ -169,11 +169,8 @@ PRODUCT_PACKAGES += \
     power.msm8226
 
 # Thermal
-PRODUCT_PACKAGES += \
-    thermanager
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermanager.xml:system/etc/thermanager.xml
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
 # USB
 PRODUCT_PACKAGES += \
