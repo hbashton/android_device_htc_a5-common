@@ -10,6 +10,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.data.large_tcp_window_size=true \
     ro.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
+    persist.radio.apm_sim_not_pwdn=1 \
     persist.rild.nitz_plmn="" \
     persist.rild.nitz_long_ons_0="" \
     persist.rild.nitz_long_ons_1="" \

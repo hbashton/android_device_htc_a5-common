@@ -16,10 +16,10 @@
 <!-- This is the standard set of features for devices that support Android Market filter. -->
 <permissions>
     <feature name="com.htc.software.HTC" />
-    <feature name="com.htc.software.Sense6.0" />
-    <feature name="com.htc.software.A5UL" />
-    <feature name="com.htc.software.Asia" />
-    <feature name="com.htc.software.WWE" />
-    <feature name="com.htc.software.PlayGroup1" />
+    <feature name="com.htc.software.Sense7.0" />
     <feature name="com.htc.software.hdk" />
+    <feature name="com.htc.software.hdk2" />
+    <feature name="com.htc.software.hdk3" />
+    <feature name="com.htc.software.A5UL" />
+    <feature name="com.htc.software.IHSense" />
 </permissions>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Version: A5 20140304_add_voice_call_with_enforce_shutter_sound -->
+<!-- Version: A5 20151026_add_init_value_for_some_paths -->
 <mixer>
 <!-- These are the initial mixer settings -->
      <ctl name="Voice Rx Device Mute" id="0" value="0" />
@@ -55,14 +55,17 @@
      <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
      <ctl name="HDMI_RX_Voice Mixer CSVoice" value="0" />
      <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="0" />
+     <ctl name="SLIM_0_RX_Voice Mixer Voip" value="0" />
      <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia1" value="0" />
      <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia2" value="0" />
      <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="0" />
      <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="0" />
+     <ctl name="MultiMedia5 Mixer INTERNAL_FM_TX" value="0" />
      <ctl name="MultiMedia1 Mixer MI2S_TX" value="0" />
      <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="0" />
      <ctl name="MultiMedia1 Mixer SLIM_4_TX" value="0" />
      <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="0" />
+     <ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="0" />
      <ctl name="HDMI Mixer MultiMedia1" value="0" />
      <ctl name="HDMI Mixer MultiMedia2" value="0" />
      <ctl name="HDMI Mixer MultiMedia3" value="0" />
@@ -139,6 +142,8 @@
      <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="0" />
      <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="0" />
      <!-- Incall Recording end -->
+     <!-- Audio BTSCO -->
+     <ctl name="MultiMedia5 Mixer INTERNAL_BT_SCO_TX" value="0" />
      <!-- anc headset -->
      <!-- IIR/voice anc -->
      <ctl name="IIR1 Band1" id="0" value="268435456" />
@@ -1064,6 +1069,10 @@
 
      <path name="speaker-and-headphones">
           <path name="headphones" />
+          <ctl name="RX4 MIX1 INP1" value="RX1" />
+          <ctl name="RX4 MIX1 INP2 Mux" value="RX2" />
+          <ctl name="SPK DAC Switch" value="1" />
+          <ctl name="COMP0 Switch" value="1" />
      </path>
 
      <path name="usb-headphones">

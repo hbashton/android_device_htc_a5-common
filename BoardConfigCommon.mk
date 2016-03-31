@@ -44,7 +44,7 @@ MALLOC_IMPL := dlmalloc
 
 # Kernel
 BOARD_DTBTOOL_ARGS := --dt-tag "htc,project-id = <"
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom user_debug=31 ehci-hcd.park=3 zcache
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
@@ -92,9 +92,6 @@ TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
-# Logging
-COMMON_GLOBAL_CFLAGS += -DMOTOROLA_LOG
 
 # NFC
 BOARD_NFC_CHIPSET := pn547

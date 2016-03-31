@@ -110,6 +110,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshim_log
 
+# GPS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/flp.conf:system/etc/flp.conf \
+    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/izat.conf:system/etc/izat.conf \
+    $(LOCAL_PATH)/configs/sap.conf:system/etc/sap.conf
+
 # Graphics
 PRODUCT_PACKAGES += \
     copybit.msm8226 \
@@ -174,9 +181,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8226
 
+# RIL
+PRODUCT_PACKAGES += \
+    libcnefeatureconfig \
+    libxml2 \
+    libstlport \
+    libshim_ril
+
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf \
+    $(LOCAL_PATH)/configs/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf
 
 # USB
 PRODUCT_PACKAGES += \
