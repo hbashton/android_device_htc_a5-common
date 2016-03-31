@@ -143,7 +143,10 @@ include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
 
 # Hardware
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS += \
+    device/htc/a5-common/cmhw \
+    hardware/cyanogen/cmhw
 
 # inherit from the proprietary version
 -include vendor/htc/a5-common/BoardConfigVendor.mk
