@@ -487,13 +487,13 @@
           <path name="voice-call" />
      </path>
 
-     <path name="voice2-call speaker">
+     <path name="voice2-call voice-speaker">
           <ctl name="TERT_MI2S_RX_Voice Mixer Voice2" value="1" />
           <ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
           <ctl name="VOC_EXT_EC MUX" value="TERT_MI2S_TX" />
      </path>
 
-     <path name="voice2-call speaker-and-headphones">
+     <path name="voice2-call voice-speaker-headset">
           <path name="voice2-call" />
      </path>
 
