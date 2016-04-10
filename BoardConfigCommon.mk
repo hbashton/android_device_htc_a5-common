@@ -40,7 +40,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_MEMCPY_BASE_OPT_DISABLE := true
 TARGET_CPU_VARIANT := krait
-MALLOC_IMPL := dlmalloc
 
 # Kernel
 BOARD_DTBTOOL_ARGS := --dt-tag "htc,project-id = <"
