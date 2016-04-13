@@ -20,8 +20,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.rild.nitz_short_ons_1="" \
     persist.rild.nitz_short_ons_2="" \
     persist.rild.nitz_short_ons_3="" \
-    DEVICE_PROVISIONED=1 \
-    ro.telephony.ril.config=simactivation
+    DEVICE_PROVISIONED=1
 
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
