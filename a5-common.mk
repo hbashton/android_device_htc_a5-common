@@ -94,7 +94,8 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    Snap \
+    libstlport
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -186,7 +187,6 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libcnefeatureconfig \
     libxml2 \
-    libstlport \
     libshim_ril
 
 # Thermal
