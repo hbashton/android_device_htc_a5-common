@@ -51,6 +51,12 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 TARGET_KERNEL_SOURCE := kernel/htc/msm8974
 TARGET_KERNEL_CONFIG := cm_a5_defconfig
 
+# Enable dex-preoptimization to speed up first boot sequence
+ifeq ($(HOST_OS),linux)
+WITH_DEXPREOPT := true
+DONT_DEXPREOPT_PREBUILTS := true
+endif
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
