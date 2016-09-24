@@ -20,7 +20,7 @@
 #include <utils/KeyedVector.h>
 #include <utils/String8.h>
 #include <camera/CameraParametersExtra.h>
-#include <camera/CameraParameters_EXT.h>
+//#include <camera/CameraParameters_EXT.h>
 
 namespace android {
 
@@ -39,7 +39,7 @@ struct Size {
     }
 };
 
-class CameraParameters : public CameraParameters_EXT
+class CameraParameters
 {
 public:
     CameraParameters();
@@ -701,13 +701,17 @@ public:
     // High-dynamic range mode
     static const char LIGHTFX_HDR[];
 
-    /* HTC parameters */
+    /* HTC parameters
     static const char SCENE_MODE_TEXT[];
     static const char KEY_SMILEINFO_BYFACE_SUPPORTED[];
     static const char KEY_CONTI_BURST_STATE[];
     static const char CONTI_BURST_CAPTURING[];
     static const char CONTI_BURST_CAPTURE_DONE[];
     static const char KEY_FORCE_USE_AUDIO_ENABLED[];
+ */
+#ifdef CAMERA_PARAMETERS_EXTRA_H
+CAMERA_PARAMETERS_EXTRA_H
+#endif
 
     /**
      * Returns the the supported preview formats as an enum given in graphics.h
