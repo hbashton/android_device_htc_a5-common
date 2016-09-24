@@ -704,7 +704,7 @@ public:
     /* HTC parameters
     static const char SCENE_MODE_TEXT[];
     static const char KEY_SMILEINFO_BYFACE_SUPPORTED[];
-    static const char KEY_CONTI_BURST_STATE[];
+    static const char KEY_CONTI_BURST_STATEE[];
     static const char CONTI_BURST_CAPTURING[];
     static const char CONTI_BURST_CAPTURE_DONE[];
     static const char KEY_FORCE_USE_AUDIO_ENABLED[];
