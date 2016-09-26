@@ -142,6 +142,9 @@ TARGET_RECOVERY_DEVICE_DIRS += device/htc/a5-common
 TARGET_RECOVERY_DEVICE_MODULES += chargeled
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
+# RIL
+TARGET_RIL_VARIANT := mickybart
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/htc/a5-common/sepolicy
