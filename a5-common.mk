@@ -21,6 +21,10 @@ $(call inherit-product-if-exists, vendor/htc/a5-common/a5-common-vendor.mk)
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
+
+PRODUCT_PACKAGES += \
+    Gello
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -45,7 +49,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.bt.bluedroid.sh \
     init.qcom.bt.sh \
-    init.qcom.ril.sh
+
+# Init
+PRODUCT_PACKAGES += \
+    init.variant.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -200,7 +207,6 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-    dhcpcd.conf \
     hostapd \
     libwcnss_qmi \
     libwpa_client \
