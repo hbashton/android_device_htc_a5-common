@@ -100,4 +100,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Legacy omx decoder support
 PRODUCT_PROPERTY_OVERRIDES += \
-    media.stagefright.less-secure=true
+    media.stagefright.less-secure=true \
+    media.stagefright.legacyencoder=true
