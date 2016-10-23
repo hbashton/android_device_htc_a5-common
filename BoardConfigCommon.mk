@@ -55,8 +55,8 @@ TARGET_KERNEL_CONFIG := cm_a5_defconfig
 
 # Enable dex-preoptimization to speed up first boot sequence
 ifeq ($(HOST_OS),linux)
-#WITH_DEXPREOPT := true
-#DONT_DEXPREOPT_PREBUILTS := true
+WITH_DEXPREOPT := true
+DONT_DEXPREOPT_PREBUILTS := true
 endif
 
 # QCOM hardware
@@ -84,7 +84,6 @@ TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_NEEDS_METADATA_CAMERA_SOURCE := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
-TARGET_MEDIA_VARIANT := 
 
 # Charge mode
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/htc_lpm/lpm_mode
@@ -152,6 +151,9 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 
 # Sensors
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
+
+# Graphics
+TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true
 
 # RIL
 TARGET_RIL_VARIANT := 

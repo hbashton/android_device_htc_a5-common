@@ -43,16 +43,13 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    init.variant.rc
 
 # Qcom init scripts for /etc
 PRODUCT_PACKAGES += \
     init.qcom.bt.bluedroid.sh \
     init.qcom.bt.sh \
-
-# Init
-PRODUCT_PACKAGES += \
-    init.variant.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -193,8 +190,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libcnefeatureconfig \
-    libxml2 \
-    libshim_ril
+    libxml2 
 
 # Thermal
 PRODUCT_COPY_FILES += \

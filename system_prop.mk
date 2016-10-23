@@ -92,7 +92,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #loglevel
 #debugging, highest loglevel
 PRODUCT_PROPERTY_OVERRIDES += \
-    sys.init_log_level=7
+    sys.init_log_level=7 \
+    persist.logd.logpersistd=logcatd
 
 # Art
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -101,4 +102,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Legacy omx decoder support
 PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.less-secure=true \
-    media.stagefright.legacyencoder=true
+    media.stagefright.legacyencoder=true \
+    persist.camera.HAL3.enabled=0 \
+    camera2.portability.force_api=1 
+
+

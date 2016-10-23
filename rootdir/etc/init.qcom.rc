@@ -108,6 +108,7 @@ on fs
 
 on post-fs-data
     symlink /sys/kernel/debug /data/d
+    symlink /sys/kernel/debug /d
 
     mkdir /data/tombstones 0771 system system
     symlink /data/tombstones /tombstones

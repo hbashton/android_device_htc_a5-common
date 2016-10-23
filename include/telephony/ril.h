@@ -573,9 +573,11 @@ typedef struct {
              * clir == 2 on "CLIR suppression" (allow CLI presentation)
              */
     RIL_UUS_Info *  uusInfo;    /* NULL or Pointer to User-User Signaling Information */
+    int reserved;               /* qcom's ril library Dial structure has extra 4 bytes */
 } RIL_Dial;
 
 typedef struct {
+    int reserved;
     int command;    /* one of the commands listed for TS 27.007 +CRSM*/
     int fileid;     /* EF id */
     char *path;     /* "pathid" from TS 27.007 +CRSM command.
@@ -590,6 +592,7 @@ typedef struct {
 } RIL_SIM_IO_v5;
 
 typedef struct {
+    int reserved;
     int command;    /* one of the commands listed for TS 27.007 +CRSM*/
     int fileid;     /* EF id */
     char *path;     /* "pathid" from TS 27.007 +CRSM command.
