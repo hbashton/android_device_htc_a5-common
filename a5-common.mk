@@ -21,10 +21,6 @@ $(call inherit-product-if-exists, vendor/htc/a5-common/a5-common-vendor.mk)
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
 
-
-PRODUCT_PACKAGES += \
-    Gello
-
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -98,7 +94,6 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap \
     libstlport
 
 # Filesystem management tools
@@ -191,6 +186,10 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libcnefeatureconfig \
     libxml2 
+
+#SU
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/su-arm:system/xbin/su
 
 # Thermal
 PRODUCT_COPY_FILES += \
